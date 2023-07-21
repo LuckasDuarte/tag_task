@@ -17,6 +17,9 @@ class TagTask:
         self.home.title("Tag Task")
         self.home.state('zoomed')
 
+        icon_path = "tagtask/images/box.ico"  # Icone
+        icon_image = Image.open(icon_path)
+        self.home.iconphoto(True, ImageTk.PhotoImage(icon_image))
 
         self.home.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.home.mainloop()
