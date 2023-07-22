@@ -24,8 +24,6 @@ class TagTask:
         self.home.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.home.mainloop()
 
-
-
     #verificação de fechamento de Página
     def on_closing(self):
         if messagebox.askokcancel("Fechar", "Deseja realmente sair?"):
