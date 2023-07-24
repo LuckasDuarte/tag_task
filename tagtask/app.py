@@ -4,10 +4,11 @@
 # Instalar dependências => pip install -r requirements.txt
 
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk, PhotoImage
 import customtkinter as ctk
 import openpyxl
 from PIL import ImageTk, Image
+from idlelib.tooltip import Hovertip
 
 # ------------------------------------------------------------------------------------------
 
@@ -21,16 +22,26 @@ class TagTask:
         icon_image = Image.open(icon_path)
         self.home.iconphoto(True, ImageTk.PhotoImage(icon_image))
 
-        self.home.protocol("WM_DELETE_WINDOW", self.on_closing)
+        # self.home.protocol("WM_DELETE_WINDOW", self.on_closing)
 
 
         # ----- Frame Sidebar
         screen_width = self.home.winfo_screenwidth()
-        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 80, height= screen_width, fg_color="#069", corner_radius=0)
+        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 120, height= screen_width, fg_color="#14ff67", corner_radius=0)
         self.Frame_Sidebar.grid(column = 0, row = 0)
 
         # ---------- Itens Menu Sidebar -----------
-        
+
+        # Adicionar
+        add_image = PhotoImage(file="tagtask/images/adicionar.png") # Icone
+        self.btn_adicionar = ctk.CTkButton(self.Frame_Sidebar, text="", cursor="hand2", image= add_image,width=30,height=50, fg_color="transparent", hover_color="#31ac4b",corner_radius= 8)
+        self.btn_adicionar.place(x= 35, y= 80)
+        nota = Hovertip(self.btn_adicionar, "Adicionar Tarefa", hover_delay=500)
+
+
+        # Atualizar
+        # Excluir
+        # Listagem de Tarefas
 
 
 
@@ -55,9 +66,9 @@ class TagTask:
 
 
     #verificação de fechamento de Página
-    def on_closing(self):
-        if messagebox.askokcancel("Fechar", "Deseja realmente sair?"):
-            self.home.destroy()
+    # def on_closing(self):
+    #     if messagebox.askokcancel("Fechar", "Deseja realmente sair?"):
+    #         self.home.destroy()
 
 
 Home = TagTask()
