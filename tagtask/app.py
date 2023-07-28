@@ -10,6 +10,11 @@ import openpyxl
 from PIL import ImageTk, Image
 from idlelib.tooltip import Hovertip
 
+# -------- Cores ---------
+azul = "#0f22a2"
+fundo = "#e8eaf5"
+select = "#bbc4e8"
+
 # ------------------------------------------------------------------------------------------
 
 class TagTask:
@@ -17,6 +22,7 @@ class TagTask:
         self.home = tk.Tk()
         self.home.title("Tag Task")
         self.home.state('zoomed')
+        self.home.configure(bg= fundo)
 
         icon_path = "tagtask/images/box.ico"  # Icone
         icon_image = Image.open(icon_path)
@@ -27,14 +33,14 @@ class TagTask:
 
         # ----- Frame Sidebar
         screen_width = self.home.winfo_screenwidth()
-        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 120, height= screen_width, fg_color="#14ff67", corner_radius=0)
-        self.Frame_Sidebar.grid(column = 0, row = 0)
+        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 120, height= screen_width / 2, fg_color=azul, corner_radius=25)
+        self.Frame_Sidebar.grid(column = 0, row = 0, padx=10, pady=10)
 
         # ---------- Itens Menu Sidebar -----------
 
         # Adicionar
         add_image = PhotoImage(file="tagtask/images/adicionar.png") # Icone
-        self.btn_adicionar = ctk.CTkButton(self.Frame_Sidebar, text="", cursor="hand2", image= add_image,width=30,height=50, fg_color="transparent", hover_color="#31ac4b",corner_radius= 8)
+        self.btn_adicionar = ctk.CTkButton(self.Frame_Sidebar, text="", cursor="hand2", image= add_image,width=30,height=50, fg_color="transparent", hover_color=select,corner_radius= 8)
         self.btn_adicionar.place(x= 35, y= 80)
         nota = Hovertip(self.btn_adicionar, "Adicionar Tarefa", hover_delay=500)
 
