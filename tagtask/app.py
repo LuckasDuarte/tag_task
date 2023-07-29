@@ -34,22 +34,27 @@ class TagTask:
 
         # ----- Frame Sidebar
         screen_width = self.home.winfo_screenwidth()
-        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 80, height= screen_width / 2, fg_color=fundo_sec, corner_radius=25)
+        screen_height = self.home.winfo_screenheight()
+        self.Frame_Sidebar = ctk.CTkFrame(self.home, width = 80, height= screen_width / 2, fg_color=select, corner_radius=25)
         self.Frame_Sidebar.grid(column = 0, row = 0, padx=10, pady=10)
 
         # ---------- Itens Menu Sidebar -----------
 
         # Adicionar
         add_image = PhotoImage(file="tagtask/images/adicionar.png") # Icone
-        self.btn_adicionar = ctk.CTkButton(self.Frame_Sidebar, text="", cursor="hand2", image= add_image,width=30,height=50, fg_color="transparent", hover_color=select,corner_radius= 8)
+        self.btn_adicionar = ctk.CTkButton(self.Frame_Sidebar, text="", cursor="hand2", image= add_image,width=30,height=50, fg_color="transparent", hover_color=fundo_sec,corner_radius= 8)
         self.btn_adicionar.place(x= 15, y= 80)
         nota = Hovertip(self.btn_adicionar, "Adicionar Tarefa", hover_delay=500)
 
         # Atualizar
-        
+
 
         # Excluir
         # Listagem de Tarefas
+
+        # --- Componentes Tela Home
+        self.Frame_Home = ctk.CTkFrame(self.home, width= screen_width - 110, height= screen_height - 90, fg_color=select, corner_radius= 8)
+        self.Frame_Home.grid(column = 1, row = 0, sticky="n", pady= 10)
 
 
 
